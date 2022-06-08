@@ -1,10 +1,10 @@
 // @flow
 import React from 'react';
-import renderer from 'react-test-renderer';
+import ReactTestRenderer from 'react-test-renderer';
 import { Provider, Subscribe, Container } from '../src/unstated';
 
 function render(element) {
-  return renderer.create(element).toJSON();
+  return ReactTestRenderer.create(element).toJSON();
 }
 
 async function click({ children = [] }, id) {
@@ -59,7 +59,7 @@ test('should incresase/decrease state counter in container', async () => {
 
 test('should remove subscriber listeners if component is unmounted', () => {
   let counter = new CounterContainer();
-  let tree = renderer.create(
+  let tree = ReactTestRenderer.create(
     <Provider inject={[counter]}>
       <Counter />
     </Provider>
